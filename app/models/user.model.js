@@ -1,6 +1,7 @@
 import { DataTypes } from "sequelize";
 import { sequelize } from "../config/db.config.js";
 import { Bootcamp } from "./bootcamp.model.js";
+import { UserBootcamp } from "./userBootcamp.model.js";
 
 const User = sequelize.define('User', {
     id: {
@@ -34,16 +35,16 @@ const User = sequelize.define('User', {
 
 //relacion M:N
 User.belongsToMany(Bootcamp, {
-    through: 'user_bootcamp',
+    through: UserBootcamp,
     foreignKey:'user_id'
 });
 
 Bootcamp.belongsToMany(User, {
-    through: 'user_bootcamp',
+    through: UserBootcamp,
     foreignKey: 'bootcamp_id'
 });
 
-sequelize.sync();
+/* sequelize.sync();  */
 
 export {
     User
