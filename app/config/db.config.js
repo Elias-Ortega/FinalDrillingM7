@@ -6,9 +6,9 @@ import { Sequelize } from "sequelize";
  (async () =>{
   try {
     await sequelize.authenticate();
-    console.log('Connection has been established successfully.');
+    console.log('Conectado a la base de datos');
   } catch (error) {
-    console.error('Unable to connect to the database:', error);
+    console.error('Incapaz de conectarse a la base de datos', error);
   }
 
 

@@ -6,7 +6,8 @@ import { UserBootcamp } from "./userBootcamp.model.js";
 const User = sequelize.define('User', {
     id: {
         type: DataTypes.INTEGER,
-        primaryKey: true
+        primaryKey: true,
+        autoIncrement: true
     },
     firstName: {
         type: DataTypes.STRING,
@@ -21,9 +22,8 @@ const User = sequelize.define('User', {
         allowNull: false,
         unique: true,
         validate: {
-            isEmail: {
-                args: true,
-                msg: "Ingrese un formato de correo válido.",
+            isEmail: {                
+                msg: "Email no cumple con el formato requerido.",
             },
         },
     }
@@ -33,7 +33,7 @@ const User = sequelize.define('User', {
     
 });
 
-//relacion M:N
+//debo cambiar esta configuracion ya que ahora sera de uno a muchos
 User.belongsToMany(Bootcamp, {
     through: UserBootcamp,
     foreignKey:'user_id'
@@ -44,7 +44,7 @@ Bootcamp.belongsToMany(User, {
     foreignKey: 'bootcamp_id'
 });
 
-/* sequelize.sync();  */
+ /*  sequelize.sync();   */
 
 export {
     User
