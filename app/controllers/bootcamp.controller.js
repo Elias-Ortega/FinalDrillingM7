@@ -72,7 +72,7 @@ const createBootcamp = async (req = request, res = response) => {
 
 }
 
-//corregir aca
+
 const addUser = async (req = request, res = response) => {
     try {
         let { user_id, bootcamp_id } = req.body;

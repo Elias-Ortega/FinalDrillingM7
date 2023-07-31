@@ -45,7 +45,7 @@ UserBootcamp.belongsTo(Bootcamp, {
 });
 
 
-/*   sequelize.sync();  */   
+  /*  sequelize.sync();   */ 
 
 export {
     UserBootcamp
