@@ -6,27 +6,35 @@ import { UserBootcamp } from '../models/userBootcamp.model.js';
 const findAll = async (req = request, res = response) => {
     try {
         let usuarios = await User.findAll({
-            include: Bootcamp
+            include: {
+                model: UserBootcamp, 
+                include: Bootcamp, 
+            },
         });
-        if (usuarios.length == 0) {
-            return res.status(404).json({ code: 404, message: "No se encontraron usuarios." })
+
+        if (usuarios.length === 0) {
+            return res.status(404).json({ code: 404, message: "No se encontraron usuarios." });
         }
-        usuarios = usuarios.map(usuario => usuario.toJSON());
-        console.log("Usuarios encontrados", usuarios)
-        res.json({ code: 200, message: 'Ok', usuarios });
+
+        usuarios = usuarios.map((usuario) => usuario.toJSON());
+        console.log("Usuarios encontrados", usuarios);
+        res.json({ code: 200, message: "Ok", usuarios });
     } catch (error) {
         res.status(500).json({ code: 500, message: "Error al obtener los usuarios del sistema" });
     }
+};
 
-}
 
 
 const findUserById = async (req = request, res = response) => {
     let id = req.params.id;
     try {
 
-        let usuario = await User.findByPk(id, {
-            include: Bootcamp
+        let usuario = await User.findByPk(id,{
+            include: {
+                model: UserBootcamp, 
+                include: Bootcamp, 
+            },
         });
 
         if (!usuario) {
@@ -63,7 +71,7 @@ const createUser = async (req = request, res = response) => {
 
 }
 
- const updateUserById = async (req = request, res = response) => {
+const updateUserById = async (req = request, res = response) => {
     let id = req.params.id;
     let { firstName, lastName, email } = req.body;
     try {

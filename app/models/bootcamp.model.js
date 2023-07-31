@@ -18,8 +18,8 @@ const Bootcamp = sequelize.define('Bootcamp', {
         allowNull: false,
         validate: {
             isInt: {
-                args: [5, 10],
-                msg: "El valor del CUE debe ser un número entero entre 5 y 10 dígitos.",
+                args: [5, 20],
+                msg: "El valor del CUE debe ser entre 5 y 20 ",
             },
         }
     },

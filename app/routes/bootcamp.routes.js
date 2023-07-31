@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { createBootcamp,  findAll, findById  } from "../controllers/bootcamp.controller.js";
+import { createBootcamp,  findAll, findById ,addUser } from "../controllers/bootcamp.controller.js";
 
 const routerBootcamps = Router();
 
@@ -9,7 +9,7 @@ routerBootcamps.get('/:id', findById);
 
 routerBootcamps.post('/', createBootcamp);
 
-
+routerBootcamps.post('/addUser/', addUser);
 
 
 export {
